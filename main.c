@@ -34,7 +34,7 @@ int main () {
 
 
     //Lecture de l'image
-    resultatLecture=lectureImagePgmBinaire("timbres10.pgm",&im);
+    resultatLecture=lectureImagePgmBinaire(filenameImage,&im);
 
     switch (resultatLecture) {
       case 1:
@@ -57,7 +57,7 @@ int main () {
     }
 
     //Lecture du modèle
-    resultatLecture=lectureImagePgmBinaire("modele2.pgm",&modele);
+    resultatLecture=lectureImagePgmBinaire(filenameModele,&modele);
 
     switch (resultatLecture) {
       case 1:
