@@ -67,7 +67,6 @@ int distance( IMAGEUCHAR im, IMAGEUCHAR patch, int is,int js){
     }
   }
   d = d/(patch.nl * patch.nc);
-  printf("%d\n",d);
   return d;
 }
 
