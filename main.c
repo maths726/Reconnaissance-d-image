@@ -9,7 +9,7 @@ int main () {
     char filenameImage[32];
     char filenameModele[32];
     char sdebug[2];
-    int debug=1; //Si debug vaut 1, le debug mode est activé
+    int debug=0; //Si debug vaut 1, le debug mode est activé
     int resultatLecture;
     int resultat;
     int seuil=40;
@@ -23,14 +23,14 @@ int main () {
     printf("\nRenseignez le nom du fichier modèle :\n");
     scanf("%s",filenameModele);
     printf("\nRenseignez le nom du fichier image :\n");
-    scanf("%s",filenameImage);
+    scanf("%s",filenameImage);*/
     printf("\nRenseignez le seuil :\n");
     scanf("%d",&seuil);
     printf("\nSouhaitez-vous activer le debug Mode ? Y/N \n");
     scanf("%s",sdebug);
     if (!(strcmp("Y",sdebug))) {
         debug=1;
-    }*/
+    }
 
 
     //Lecture de l'image
@@ -83,7 +83,7 @@ int main () {
         ecritureImagePgmBinaire("debug3.pgm",modele);
         ecritureImagePgmBinaire("debug4.pgm",im);
     }
-
+	
     //Processing
     dist=templateMatching(im,modele);
 
@@ -115,6 +115,7 @@ int main () {
     if (debug) {
       printf("Les resultats du debug sont contenues dans \"debug1.pgm\", \"debug2.pgm\", \"debug3.pgm\" et \"debug4.pgm\" :) \n");
     }
-
+	
+	getchar();
     return 0;
 }

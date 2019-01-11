@@ -160,7 +160,8 @@ int lectureImagePgmBinaire(char* fic,IMAGEUCHAR * im) {
 
     //Allocation tableau pour image
     *im=creationImageUChar(nbLigne,nbColonne);
-
+	
+	fread(&((im->val)[0][0]),sizeof(PIXEL),1,f);
     //Lecture Pixels
     for (i=0;i<nbLigne;i++) {
         for (j=0;j<nbColonne;j++) {
