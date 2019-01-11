@@ -24,6 +24,7 @@ PIXEL** alloueMemoireImageChar(int nl, int nc) {
 
     //Vérification
     if (tabAdrLin==NULL) {
+      printf("ERREUR Allocation");
       exit(EXIT_FAILURE);
     }
 
@@ -32,6 +33,7 @@ PIXEL** alloueMemoireImageChar(int nl, int nc) {
         *adrLin=calloc(nc,sizeof(PIXEL));
         // Vérification
         if (*adrLin==NULL) {
+          printf("ERREUR Allocation");
           exit(EXIT_FAILURE);
         }
     }
@@ -51,6 +53,7 @@ int** alloueMemoireImageInt(int nl, int nc) {
 
     //Vérification
     if (tabAdrLin==NULL) {
+      printf("ERREUR Allocation");
       exit(EXIT_FAILURE);
     }
 
@@ -59,6 +62,7 @@ int** alloueMemoireImageInt(int nl, int nc) {
         *adrLin=calloc(nc,sizeof(int));
         // Vérification
         if (*adrLin==NULL) {
+          printf("ERREUR Allocation");
           exit(EXIT_FAILURE);
         }
     }
@@ -142,19 +146,18 @@ int lectureImagePgmBinaire(char* fic,IMAGEUCHAR * im) {
     if (strcmp(magicNumber,"P5")) {
         return 1;
     }
-    getchar();
+
     //Traitement commentaire
     fgets(tmp,512,f);
     fgets(tmp,512,f);
-    getchar();
+
     //Traitement Taille et intensiteMax
     fscanf(f,"%d %d",&nbColonne,&nbLigne);
     fscanf(f,"%d", &intensiteMax);
     if (intensiteMax > 255) {
       return 3;
     }
-    getchar();
-    printf("PD");
+
     //Allocation tableau pour image
     *im=creationImageUChar(nbLigne,nbColonne);
 
@@ -164,7 +167,6 @@ int lectureImagePgmBinaire(char* fic,IMAGEUCHAR * im) {
               fread(&((im->val)[i][j]), sizeof(PIXEL),1,f);
         }
     }
-    getchar();
 
     //Fin
     fclose(f);
@@ -190,7 +192,6 @@ IMAGEUCHAR minLocal(IMAGEINT im) {
         for (j=0;j<im.nc;j++) {
             if ((compVois(im,i,j,1,0))&&(compVois(im,i,j,0,1))&&(compVois(im,i,j,-1,0))&&(compVois(im,i,j,0,-1))&&(compVois(im,i,j,1,1))&&(compVois(im,i,j,-1,-1))&&(compVois(im,i,j,1,-1))&&(compVois(im,i,j,-1,1))) {
                 newIm.val[i][j]=(sqrt((double)(im.val[i][j])));
-                printf("%hhu\n",(newIm.val[i][j]));
             }
             else {
                 newIm.val[i][j]=UCHAR_MAX;

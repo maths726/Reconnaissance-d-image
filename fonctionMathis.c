@@ -6,17 +6,14 @@
 
 void resetImageUChar(IMAGEUCHAR* pim){ /*Libération de l'espace*/
   int i;
-  printf("JUJUL1");
-  getchar();
+
   for (i=0;i<(pim->nl);i++) {
     free(pim->val[i]);
-    printf("\nJUJUL%d",i);
+
   }
-  printf("JUJUL_Ta_Race");
-  getchar();
+
   free(pim->val);
-  printf("JUJUL2");
-  getchar();
+
   pim->val=NULL;
   pim->nc = 0; /*Mise à zero des nombres de lignes et colonnes*/
   pim->nl = 0;
@@ -26,6 +23,7 @@ void resetImageInt(IMAGEINT* pim){/*Libération de l'espace*/
   int i;
   for (i=0;i<(pim->nl);i++) free(pim->val[i]);
   free(pim->val);
+  pim->val=NULL;
   pim->nc = 0; /*Mise à zero des nombres de lignes et colonnes*/
   pim->nl = 0;
 }
