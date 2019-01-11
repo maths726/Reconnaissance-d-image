@@ -12,7 +12,7 @@ void resetImageUChar(IMAGEUCHAR* pim){ /*Libération de l'espace*/
     free(pim->val[i]);
     printf("\nJUJUL%d",i);
   }
-  printf("JUJUL_ULTIMATE");
+  printf("JUJUL_Ta_Race");
   getchar();
   free(pim->val);
   printf("JUJUL2");
