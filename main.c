@@ -19,11 +19,11 @@ int main () {
     IMAGEUCHAR imApresTraitement1;
     IMAGEUCHAR imApresTraitement2;
 
-    /*//Renseignements demandés à l'utilisateur
+    //Renseignements demandés à l'utilisateur
     printf("\nRenseignez le nom du fichier modèle :\n");
     scanf("%s",filenameModele);
     printf("\nRenseignez le nom du fichier image :\n");
-    scanf("%s",filenameImage);*/
+    scanf("%s",filenameImage);
     printf("\nRenseignez le seuil :\n");
     scanf("%d",&seuil);
     printf("\nSouhaitez-vous activer le debug Mode ? Y/N \n");
@@ -34,7 +34,7 @@ int main () {
 
 
     //Lecture de l'image
-    resultatLecture=lectureImagePgmBinaire("timbres10.pgm",&im);
+    resultatLecture=lectureImagePgmBinaire(filenameImage,&im);
 
     switch (resultatLecture) {
       case 1:
@@ -57,7 +57,7 @@ int main () {
     }
 
     //Lecture du modèle
-    resultatLecture=lectureImagePgmBinaire("modele2.pgm",&modele);
+    resultatLecture=lectureImagePgmBinaire(filenameModele,&modele);
 
     switch (resultatLecture) {
       case 1:
@@ -83,7 +83,7 @@ int main () {
         ecritureImagePgmBinaire("debug3.pgm",modele);
         ecritureImagePgmBinaire("debug4.pgm",im);
     }
-	
+
     //Processing
     dist=templateMatching(im,modele);
 
@@ -115,7 +115,7 @@ int main () {
     if (debug) {
       printf("Les resultats du debug sont contenues dans \"debug1.pgm\", \"debug2.pgm\", \"debug3.pgm\" et \"debug4.pgm\" :) \n");
     }
-	
+
 	getchar();
     return 0;
 }

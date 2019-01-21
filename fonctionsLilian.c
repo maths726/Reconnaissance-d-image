@@ -160,8 +160,10 @@ int lectureImagePgmBinaire(char* fic,IMAGEUCHAR * im) {
 
     //Allocation tableau pour image
     *im=creationImageUChar(nbLigne,nbColonne);
-	
-	fread(&((im->val)[0][0]),sizeof(PIXEL),1,f);
+
+    //Lit le carctère restant
+	  fread(&((im->val)[0][0]),sizeof(PIXEL),1,f);
+
     //Lecture Pixels
     for (i=0;i<nbLigne;i++) {
         for (j=0;j<nbColonne;j++) {
@@ -208,17 +210,18 @@ IMAGEUCHAR seuilImageUChar(IMAGEUCHAR im, int seuil) {
 
     //Déclarations
     int i,j;
+    IMAGEUCHAR newIm = creationImageUChar(im.nl,im.nc);
 
     //Traitement
     for (i=0;i<im.nl;i++) {
         for (j=0;j<im.nc;j++) {
             if (im.val[i][j]<seuil) {
-                im.val[i][j]=255;
+                newIm.val[i][j]=255;
             }
             else {
-                im.val[i][j]=0;
+                newIm.val[i][j]=0;
             }
         }
     }
-    return im;
+    return newIm;
 }

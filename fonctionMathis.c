@@ -57,17 +57,18 @@ int lectureImagePgmBinaire(char* fic,IMAGEUCHAR * im){
 */
 int distance( IMAGEUCHAR im, IMAGEUCHAR patch, int is,int js){
   int i = 0,j=0;
-  int d = 0;
+  long d = 0;
   int I,T;
   for (i=0;i< patch.nl;i++) {
     for (j=0; j< patch.nc;j++){
-      I = im.val[(is - (patch.nl)/2 + i + patch.nl)%patch.nl][(js - (patch.nc)/2 + j + patch.nc)%patch.nc];
+      I = im.val[(is - (patch.nl)/2 + i + im.nl)%im.nl][(js - (patch.nc)/2 + j + im.nc)%im.nc];
       T = patch.val[i][j];
       d += (I-T)*(I-T);
     }
   }
   d = d/(patch.nl * patch.nc);
-  return d;
+  //printf("%ld\n",d);
+  return ((int)(d));
 }
 
 
